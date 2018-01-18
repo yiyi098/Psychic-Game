@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>The Pyschic Game</title>
+  </head>
+  <body>
+
+    <h1>The Psychic Game</h1>
+
+    <h2>Guess what letter I'm thinking of!</h2>
+
+    <p>Wins: <span id="userScore"></span></p>
+
+    <p>Losses: <span id="computerScore"></span></p>
+
+    <p>Guesses Left: <span id="guesses"></span></p>
+
+    <p>Your Guesses so far: <span id="user-input"></span></p>
+
+    <script type="text/javascript">
+
+    var userScore = document.getElementById("userScore");
+    userScore.textContent = 0;
+
+    var computerScore = document.getElementById("computerScore");
+    computerScore.textContent = 0;
+    
+    var guesses = document.getElementById("guesses");
+    guesses.textContent = 9;
+
+    var userInput = document.getElementById("user-input");
+    var userInputList = [];
+
+    var reset = document.getElementById("user-reset");
+
+    // var wrongInput = document.getElementById("wrong-input");
+    console.log(userInput)
+    // Next, we give JavaScript a function to execute when onkeyup event fires.
+
+      computerSelections = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+
+      var computerRandomSelection = computerSelections[Math.floor(Math.random() * computerSelections.length)];
+
+      // var startingSelection = computerRandomSelection();
+
+      console.log(computerRandomSelection);
+
+      document.onkeyup = function(event) {
+      // userInput.textContent = event.key;
+
+      //Starting Guesses
+      if (event.key == computerRandomSelection) {
+        console.log("You guessed correctly!");
+        userScore.textContent++;
+        guesses.textContent = 9;
+        userInputList = [];
+        userInput.textContent = userInputList;
+        computerRandomSelection = computerSelections[Math.floor(Math.random() * computerSelections.length)];
+        console.log(computerRandomSelection);
+      } else {
+        console.log("You guessed wrong...");
+        guesses.textContent--;
+        userInputList.push(event.key);
+        // console.log(userInputList);
+        userInput.textContent = userInputList;
+      }
+
+      //When out of guesses
+      if (guesses.textContent == 0) {
+        console.log("You lost...");
+        computerScore.textContent++;
+        guesses.textContent = 9;
+        userInputList = [];
+        userInput.textContent = userInputList;
+        computerRandomSelection = computerSelections[Math.floor(Math.random() * computerSelections.length)];
+        console.log(computerRandomSelection);
+      }
+    
+    };
+
+    </script>
+
+  </body>
+</html>
