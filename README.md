@@ -1,5 +1,7 @@
 # Psychic-Game
 
+[Link to app](https://yiyi098.github.io/Psychic-Game/)
+
 ### Overview
 
 This app randomly picks a letter, and the user has to guess which letter the app choses.
